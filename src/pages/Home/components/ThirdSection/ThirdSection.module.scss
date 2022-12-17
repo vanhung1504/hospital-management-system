@@ -1,0 +1,57 @@
+.third-section {
+  background-image: url("/assets/images/HomePage/Section-3/bg-section3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.wrapper {
+  background-color: #e6f3fa;
+  color: #777;
+  border-radius: 20px;
+
+  &.left {
+    padding: 100px 70px;
+    margin: 16px 0;
+  }
+
+  &.right {
+    padding: 28px;
+
+    .title {
+      font-size: 22px;
+    }
+  }
+
+  .title {
+    color: #0067ac;
+    font-family: "Bai Jamjuree", Sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.4em;
+    letter-spacing: -1px;
+  }
+
+  .content {
+    font-size: 18px;
+  }
+
+  .link {
+    font-family: "Bai Jamjuree", Sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    fill: #eaf9ff;
+    color: #eaf9ff;
+    background-color: #0059ac;
+    border-radius: 20px 20px 20px 20px;
+    padding: 15px 30px;
+    opacity: 1;
+    transition: all 0.25 ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

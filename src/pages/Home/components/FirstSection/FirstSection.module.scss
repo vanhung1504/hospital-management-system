@@ -1,0 +1,45 @@
+.wrapper {
+  background-image: url("/assets/images/HomePage/Section-1/bg-main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+
+  .main-heading {
+    text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .slogan {
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: 600;
+  }
+
+  .meta-info {
+    .meta-info-item {
+      overflow: hidden;
+
+      .counter {
+        color: #0059ac;
+        font-size: 32px;
+        font-weight: 600;
+      }
+
+      .name {
+        color: #0059ac;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .user-welcome {
+    .icon {
+      color: #ff2a72;
+    }
+
+    span {
+      color: #090aa6;
+    }
+  }
+}

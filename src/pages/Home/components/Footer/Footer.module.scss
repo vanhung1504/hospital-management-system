@@ -1,0 +1,35 @@
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.footer {
+  padding: 12px;
+  background-color: #111a35;
+  color: #fff;
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .link-item {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .link-wrapper {
+      justify-content: center !important;
+
+      .link-item {
+        margin: 10px;
+      }
+    }
+
+    .copyright-wrapper {
+      justify-content: center !important;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+  }
+}
