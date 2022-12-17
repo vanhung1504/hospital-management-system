@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { format } from "date-fns/esm";
+import { format } from "date-fns";
 import { handleLocalStorage } from "~/store/features/functions";
 const USER_LOGGEDIN = "USER_LOGGEDIN";
 const initialState = handleLocalStorage(USER_LOGGEDIN);
