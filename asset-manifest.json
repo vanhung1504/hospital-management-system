@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hospital-management-system/static/css/main.26bf9705.css",
-    "main.js": "/hospital-management-system/static/js/main.643471c7.js",
+    "main.js": "/hospital-management-system/static/js/main.8386223b.js",
     "static/js/787.a900a79a.chunk.js": "/hospital-management-system/static/js/787.a900a79a.chunk.js",
     "static/media/NotFound.gif": "/hospital-management-system/static/media/NotFound.181c5a6430bcb77324b1.gif",
     "static/media/developing.gif": "/hospital-management-system/static/media/developing.2380e25cffc0ddbee637.gif",
@@ -24,11 +24,11 @@
     "static/media/in-patient.png": "/hospital-management-system/static/media/in-patient.41e5c68d0dc8a764f2d7.png",
     "index.html": "/hospital-management-system/index.html",
     "main.26bf9705.css.map": "/hospital-management-system/static/css/main.26bf9705.css.map",
-    "main.643471c7.js.map": "/hospital-management-system/static/js/main.643471c7.js.map",
+    "main.8386223b.js.map": "/hospital-management-system/static/js/main.8386223b.js.map",
     "787.a900a79a.chunk.js.map": "/hospital-management-system/static/js/787.a900a79a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26bf9705.css",
-    "static/js/main.643471c7.js"
+    "static/js/main.8386223b.js"
   ]
 }
