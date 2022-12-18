@@ -81,7 +81,7 @@ function App() {
   const userRoles = id ? userLoggedIn.roles : null;
 
   return (
-    <Router>
+    <Router basename="/hospital-management-system">
       <div className="App">
         <Routes>
           {/* Public route */}
