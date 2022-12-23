@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/hospital-management-system/static/css/main.26bf9705.css",
-    "main.js": "/hospital-management-system/static/js/main.8386223b.js",
-    "static/js/787.a900a79a.chunk.js": "/hospital-management-system/static/js/787.a900a79a.chunk.js",
+    "main.css": "/hospital-management-system/static/css/main.aa2ab9a8.css",
+    "main.js": "/hospital-management-system/static/js/main.f40f19bf.js",
+    "static/js/787.6965a70c.chunk.js": "/hospital-management-system/static/js/787.6965a70c.chunk.js",
     "static/media/NotFound.gif": "/hospital-management-system/static/media/NotFound.181c5a6430bcb77324b1.gif",
     "static/media/developing.gif": "/hospital-management-system/static/media/developing.2380e25cffc0ddbee637.gif",
     "static/media/ProximaNova-Semibold.woff2": "/hospital-management-system/static/media/ProximaNova-Semibold.db7972dbe0b808f96bae.woff2",
@@ -23,12 +23,12 @@
     "static/media/pharmacy.png": "/hospital-management-system/static/media/pharmacy.e89c5ccce01d984d7a20.png",
     "static/media/in-patient.png": "/hospital-management-system/static/media/in-patient.41e5c68d0dc8a764f2d7.png",
     "index.html": "/hospital-management-system/index.html",
-    "main.26bf9705.css.map": "/hospital-management-system/static/css/main.26bf9705.css.map",
-    "main.8386223b.js.map": "/hospital-management-system/static/js/main.8386223b.js.map",
-    "787.a900a79a.chunk.js.map": "/hospital-management-system/static/js/787.a900a79a.chunk.js.map"
+    "main.aa2ab9a8.css.map": "/hospital-management-system/static/css/main.aa2ab9a8.css.map",
+    "main.f40f19bf.js.map": "/hospital-management-system/static/js/main.f40f19bf.js.map",
+    "787.6965a70c.chunk.js.map": "/hospital-management-system/static/js/787.6965a70c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.26bf9705.css",
-    "static/js/main.8386223b.js"
+    "static/css/main.aa2ab9a8.css",
+    "static/js/main.f40f19bf.js"
   ]
 }
