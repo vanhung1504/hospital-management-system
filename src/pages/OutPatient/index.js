@@ -1,5 +1,7 @@
 import { memo, useRef, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import Footer from "~/components/Footer";
+import GoToTop from "~/components/GoToTop";
 import MainLayout from "~/components/MainLayout";
 import MedicalVisits from "~/components/MedicalVisits";
 import MedicalVisitDetail from "./components";
@@ -32,7 +34,17 @@ function OutPatient() {
         </div>
       )}
 
-      <div className="p-5"></div>
+      {visitId && (
+        <Container>
+          <Row>
+            <Col lg={8} md={12} className="mx-auto">
+              <Footer />
+            </Col>
+          </Row>
+        </Container>
+      )}
+
+      <GoToTop />
     </MainLayout>
   );
 }

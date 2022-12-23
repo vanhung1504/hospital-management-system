@@ -1,14 +1,16 @@
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { memo, useMemo, useState } from "react";
-import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { formatToCurrency } from "~/store/features/functions";
+import { getClsXNbyVisitId } from "~/store/features/laboratory/laboratorySlice";
 
-function OtherServicesForm({ servicesSelected, setServicesSelected }) {
+function OtherServicesForm({ servicesSelected, setServicesSelected, visitId }) {
   const [search, setSearch] = useState("");
 
   const services = useSelector((state) => state.healthCareServices);
+  const result = useSelector(getClsXNbyVisitId(visitId));
   const rows = useMemo(() => {
     const otherServices = [];
     let index = 0;
@@ -26,15 +28,25 @@ function OtherServicesForm({ servicesSelected, setServicesSelected }) {
             phanNhom: services[key].name,
             name: data[i].name,
             price: formatToCurrency(data[i].price),
+            lock: ((key, id) => {
+              if (key === "clsXN") {
+                const index = result.findIndex((rs) => rs.serviceId === id);
+                if (index === -1) {
+                  return false;
+                } else {
+                  return true;
+                }
+              } else {
+                return false;
+              }
+            })(key, data[i].id),
           });
         }
       }
     }
 
     return otherServices;
-  }, [services]);
-
-  // console.log(servicesSelected);
+  }, [services, result]);
 
   const columns = [
     {
@@ -61,11 +73,12 @@ function OtherServicesForm({ servicesSelected, setServicesSelected }) {
   ];
 
   return (
-    <Container>
+    <div>
       <Row className="mt-2">
         <Col>
           <InputGroup className="mb-2">
             <Form.Control
+              autoFocus
               placeholder="Tìm kiếm dịch vụ"
               onChange={(e) => setSearch(e.target.value.trim().toLowerCase())}
             />
@@ -84,6 +97,7 @@ function OtherServicesForm({ servicesSelected, setServicesSelected }) {
             <DataGrid
               rows={rows}
               columns={columns}
+              isRowSelectable={(params) => params.row.lock === false}
               checkboxSelection={true}
               disableSelectionOnClick
               filterModel={{
@@ -104,7 +118,7 @@ function OtherServicesForm({ servicesSelected, setServicesSelected }) {
           </Box>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 

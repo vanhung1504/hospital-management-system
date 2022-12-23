@@ -24,7 +24,8 @@ function OtherServices({ visitId }) {
     }
 
     return otherServicesArr;
-  }, [otherServices]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [otherServices, lock]);
 
   useEffect(() => {
     setServicesSelected(transformOtherServices);
@@ -43,10 +44,13 @@ function OtherServices({ visitId }) {
         <OtherServicesForm
           servicesSelected={servicesSelected}
           setServicesSelected={setServicesSelected}
+          visitId={visitId}
         />
       )}
 
-      {otherServices && <OtherServicesView otherServices={otherServices} />}
+      {otherServices && (
+        <OtherServicesView otherServices={otherServices} visitId={visitId} />
+      )}
     </>
   );
 }

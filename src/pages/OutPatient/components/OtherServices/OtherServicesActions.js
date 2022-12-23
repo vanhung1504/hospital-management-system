@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { AiFillEdit, AiFillSave, AiOutlineRollback } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -35,7 +35,7 @@ function OtherServicesActions({ lock, setLock, visitId, servicesSelected }) {
   };
 
   return (
-    <Container className="mt-3">
+    <div className="mt-3">
       <Row className="align-items-center">
         <Col xs={10}>
           <h2 className="m-0 fs-5 fw-bold">IV. CLS - DV KHÁC</h2>
@@ -52,7 +52,7 @@ function OtherServicesActions({ lock, setLock, visitId, servicesSelected }) {
           </Button>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 

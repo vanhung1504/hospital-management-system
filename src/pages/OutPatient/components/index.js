@@ -1,18 +1,18 @@
 import { memo, useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Dialog from "~/components/Dialog";
+import PatientInfo from "~/components/PatientInfo";
 import {
   getMedicalVisitById,
   saveVisit,
 } from "~/store/features/medicalVisits/medicalVisitsSlice";
 import { deleteVisitMetaInfo } from "~/store/features/medicalVisitsMetaInfo/medicalVisitsMetaInfoSlice";
 import { getPatientById } from "~/store/features/patients/patientsSlice";
-import OtherServices from "./OtherServices";
 import MedicalInquiry from "./MedicalInquiry";
-import PatientInfo from "./PatientInfo";
-import PhysicalExamination from "./PhysicalExamination";
 import Medicines from "./Medicines";
+import OtherServices from "./OtherServices";
+import PhysicalExamination from "./PhysicalExamination";
 
 function MedicalVisitDetail({ visitId }) {
   const userId = useSelector((state) => state.userLoggedIn.id);
@@ -22,8 +22,8 @@ function MedicalVisitDetail({ visitId }) {
     isShow: false,
   });
   const dispatch = useDispatch();
-  const handleDialog = () => {
-    const handeConfirm = (bool) => {
+  const handleCallPatient = () => {
+    const handleConfirm = (bool) => {
       if (bool) {
         if (status === -1) {
           dispatch(
@@ -45,14 +45,11 @@ function MedicalVisitDetail({ visitId }) {
           );
           dispatch(deleteVisitMetaInfo(visitId));
         }
-        setDialog({
-          isShow: false,
-        });
-      } else {
-        setDialog({
-          isShow: false,
-        });
       }
+
+      setDialog({
+        isShow: false,
+      });
     };
 
     setDialog({
@@ -63,7 +60,7 @@ function MedicalVisitDetail({ visitId }) {
           ? `Gọi bệnh nhân ${pid} - ${fullname} - ${dob}`
           : `Hủy khám bệnh nhân ${pid} - ${fullname} - ${dob}`,
       modalConfirm: "modalYesNo",
-      handleModal: handeConfirm,
+      handleModal: handleConfirm,
     });
   };
 
@@ -82,7 +79,7 @@ function MedicalVisitDetail({ visitId }) {
               <Button
                 className="px-5"
                 variant={status === -1 ? "primary" : "warning"}
-                onClick={() => handleDialog()}
+                onClick={() => handleCallPatient()}
               >
                 {status === -1 ? "Gọi khám" : "Hủy khám"}
               </Button>
@@ -100,7 +97,7 @@ function MedicalVisitDetail({ visitId }) {
                 <MedicalInquiry visitId={visitId} />
                 <PhysicalExamination visitId={visitId} />
                 <OtherServices visitId={visitId} />
-                <Medicines visitId={visitId} />
+                <Medicines visitId={visitId} setDialog={setDialog} />
               </>
             )}
           </Col>

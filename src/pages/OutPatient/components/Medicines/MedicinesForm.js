@@ -1,19 +1,20 @@
-import { Box } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { memo, useMemo, useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { formatToCurrency } from "~/store/features/functions";
-
 import { Autocomplete, TextField } from "@mui/material";
+import { memo, useEffect, useState } from "react";
+import { Button, Col, Row } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
-import { BiAddToQueue } from "react-icons/bi";
-import { FaSave } from "react-icons/fa";
-import { GiCancel } from "react-icons/gi";
+import { GiMedicines } from "react-icons/gi";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { UNITS } from "~/pages/Configs/components/Medicines/units";
+import { saveMedicine } from "~/store/features/medicalVisitsMetaInfo/medicalVisitsMetaInfoSlice";
 
-function MedicinesForm({ servicesSelected, setServicesSelected }) {
+function MedicinesForm({
+  visitId,
+  medId,
+  medicines: medicinesPatient,
+  setLock,
+}) {
+  const dispatch = useDispatch();
   const medicines = useSelector((state) => state.medicines);
   const [unit, setUnit] = useState(-1);
 
@@ -22,14 +23,19 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
     handleSubmit,
     setValue,
     setFocus,
-    reset,
     control,
     watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(saveMedicine({ medicine: { ...data, unit: unit }, id: visitId }));
+    toast.success("Lưu thông tin thành công!");
+    if (medId) {
+      setLock(true);
+    } else {
+      setValue("medicineId", null);
+    }
   };
 
   const displayHowToUse = () => {
@@ -47,10 +53,22 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
     }
   };
 
+  useEffect(() => {
+    if (medicinesPatient && medId) {
+      const drugInfo = medicinesPatient.find((med) => med.medicineId === medId);
+      if (drugInfo) {
+        for (const key of Object.keys(drugInfo)) {
+          setValue(key, drugInfo[key]);
+        }
+        setUnit(drugInfo.unit);
+      }
+    }
+    setFocus("medicineId");
+  }, [setFocus, setValue, medicinesPatient, medId]);
+
   return (
-    <Container>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <Button type="submit">Submit</Button>
         {/* Ten thuoc, So luong */}
         <Row className="mt-2">
           <Col xs={12} className="mb-2">
@@ -77,7 +95,7 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
                       }}
                       renderInput={(params) => (
                         <>
-                          <TextField {...params} />
+                          <TextField {...params} inputRef={ref} />
                           {errors.medicineId && (
                             <span className="text-danger fst-italic fs-6">
                               Trường này là bắt buộc!
@@ -86,8 +104,6 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
                         </>
                       )}
                       onChange={(_, data) => {
-                        // visitIdRef.current = formInput.id;
-                        // depIdRef.current = data;
                         if (data) {
                           setUnit(
                             ((id) =>
@@ -220,7 +236,7 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
 
         {/* So luong */}
         <Row>
-          <Col xs={6} sm={3} className="mb-2">
+          <Col xs={4} sm={3} className="mb-2">
             <div>
               <label htmlFor="quantity" className="form-label mb-0">
                 Số lượng
@@ -251,9 +267,9 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
               )}
             </div>
           </Col>
-          <Col xs={6} sm={3} className="mb-2">
+          <Col xs={4} sm={3} className="mb-2">
             <div>
-              <label htmlFor="dvt" className="form-label mb-0">
+              <label htmlFor="unit" className="form-label mb-0">
                 ĐVT
               </label>
               <select id="unit" className="form-select" disabled value={unit}>
@@ -270,9 +286,15 @@ function MedicinesForm({ servicesSelected, setServicesSelected }) {
               </select>
             </div>
           </Col>
+          <Col xs={4} sm={3} className="mb-2 d-flex align-items-end">
+            <Button type="submit">
+              <GiMedicines className="me-2" />
+              Lưu
+            </Button>
+          </Col>
         </Row>
       </form>
-    </Container>
+    </div>
   );
 }
 

@@ -88,7 +88,7 @@ function MedicalVisitForm({ patientId, setFormInput, formInput }) {
     }
     setFocus("content");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setFocus, visit]);
+  }, [setFocus, visit, visits]);
 
   const onSubmit = (data) => {
     if (patientId) {
@@ -224,7 +224,7 @@ function MedicalVisitForm({ patientId, setFormInput, formInput }) {
                     }
                     renderInput={(params) => (
                       <>
-                        <TextField {...params} />
+                        <TextField {...params} inputRef={ref} />
                         {errors.content && (
                           <span className="text-danger fst-italic fs-6">
                             Trường này là bắt buộc!

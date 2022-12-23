@@ -1,5 +1,5 @@
 import { memo, useEffect, useMemo, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { AiFillEdit, AiFillSave, AiOutlineRollback } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,7 +70,7 @@ function MedicalInquiry({ visitId }) {
   };
 
   return (
-    <Container className="mt-3">
+    <div className="mt-3">
       <form>
         <Row className="align-items-center">
           <Col xs={10}>
@@ -201,7 +201,7 @@ function MedicalInquiry({ visitId }) {
           </Col>
         </Row>
       </form>
-    </Container>
+    </div>
   );
 }
 

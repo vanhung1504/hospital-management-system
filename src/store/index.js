@@ -9,6 +9,7 @@ import medicalVisitsSlice from "./features/medicalVisits/medicalVisitsSlice";
 import medicalVisitsMetaInfoSlice from "./features/medicalVisitsMetaInfo/medicalVisitsMetaInfoSlice";
 import healthCareServicesSlice from "./features/systemConfigs/healthCareServicesSlice";
 import medicinesSlice from "./features/systemConfigs/medicinesSlice";
+import laboratorySlice from "./features/laboratory/laboratorySlice";
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     medicalVisitsMetaInfo: medicalVisitsMetaInfoSlice,
     healthCareServices: healthCareServicesSlice,
     medicines: medicinesSlice,
+    laboratory: laboratorySlice,
   },
 });
 

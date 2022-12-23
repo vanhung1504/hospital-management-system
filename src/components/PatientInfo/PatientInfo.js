@@ -1,11 +1,11 @@
 import { memo, useEffect, useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { getMedicalVisitById } from "~/store/features/medicalVisits/medicalVisitsSlice";
+import { getOtherInfoById } from "~/store/features/othersInfo/othersInfoSlice";
 import { getPatientById } from "~/store/features/patients/patientsSlice";
 import { getDepartementById } from "~/store/features/systemConfigs/departmentsSlice";
 import { getUserById } from "~/store/features/systemConfigs/usersSlice";
-import { getOtherInfoById } from "~/store/features/othersInfo/othersInfoSlice";
 
 function PatientInfo({ visitId }) {
   const [visitIdInit, setVisitIdInit] = useState(null);
@@ -25,7 +25,7 @@ function PatientInfo({ visitId }) {
   }, [visitId]);
 
   return (
-    <Container className="mt-3">
+    <div className="mt-3">
       <Row>
         <h2 className="fs-5 fw-bold">I. HÀNH CHÍNH</h2>
       </Row>
@@ -140,7 +140,7 @@ function PatientInfo({ visitId }) {
           />
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 
