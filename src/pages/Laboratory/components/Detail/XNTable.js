@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { AiFillDelete, AiFillSave } from "react-icons/ai";
+import { AiFillDelete, AiFillSave, AiOutlineDotChart } from "react-icons/ai";
 import { CgTikcode } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -12,7 +12,7 @@ import {
   saveResult,
 } from "~/store/features/laboratory/laboratorySlice";
 
-function XNTable({ select, setSelect }) {
+function XNTable({ select, setSelect, setChart }) {
   const [selected, setSelected] = useState([]);
   const tableRef = useRef();
 
@@ -198,6 +198,16 @@ function XNTable({ select, setSelect }) {
               >
                 <AiFillDelete className="me-1" />
                 Hủy SID
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                className="mx-auto d-flex align-items-center"
+                variant="primary"
+                onClick={() => setChart(true)}
+              >
+                <AiOutlineDotChart className="me-1" />
+                Chart
               </Button>
             </Col>
             <Col>

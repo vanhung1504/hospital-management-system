@@ -23,7 +23,7 @@ function ChangePassword({ userLoggedIn, setShowChangePass }) {
         password: encodePassword(data.password),
       })
     );
-    toast.success("Đôi mật khẩu thành công!");
+    toast.success("Đổi mật khẩu thành công!");
     setShowChangePass(false);
   };
 

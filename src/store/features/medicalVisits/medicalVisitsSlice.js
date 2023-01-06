@@ -58,6 +58,32 @@ const medicalVisitsSlice = createSlice({
       handleLocalStorage(MEDICAL_VISITS, state);
       return state;
     },
+    finishVisit(state, action) {
+      const { id, status, depId } = action.payload;
+      const index = state.findIndex((visit) => visit.id === id);
+      if (index !== -1) {
+        if (status === 2) {
+          state[index] = {
+            ...state[index],
+            status: status,
+            finishAtDate: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
+          };
+        } else if (status === 1) {
+          state[index] = {
+            ...state[index],
+            status: status,
+            inPatientDepId: depId,
+          };
+        } else if (status === 0) {
+          state[index] = {
+            ...state[index],
+            status: status,
+          };
+        }
+      }
+      handleLocalStorage(MEDICAL_VISITS, state);
+      return state;
+    },
     deleteVisit(state, action) {
       const index = state.findIndex((visit) => visit.id === action.payload);
       if (index !== -1) {
@@ -70,7 +96,8 @@ const medicalVisitsSlice = createSlice({
 });
 
 export default medicalVisitsSlice.reducer;
-export const { saveVisit, deleteVisit } = medicalVisitsSlice.actions;
+export const { saveVisit, finishVisit, deleteVisit } =
+  medicalVisitsSlice.actions;
 export const getMedicalVisitByPatientId = (pid) => (state) => {
   return state.medicalVisits
     .filter((visit) => visit.patientId === pid)

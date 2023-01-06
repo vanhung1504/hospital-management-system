@@ -117,7 +117,7 @@ export const USERS_LIST = {
       chucVu: "3613c033-26d9-4cf8-84e2-ee59118e3609",
       username: "dungnth",
       password: "202cb962ac59075b964b07152d234b70",
-      roles: ["reception", "outpatient", "inpatient"],
+      roles: ["reception", "outpatient", "laboratory"],
       userStatus: true,
     },
   ],
@@ -348,23 +348,27 @@ export const MEDICAL_VISITS = [
     content: "6b9169e4-69a1-42fe-9908-cb03e9d4d914",
     depId: "5egd4887-5581-6b0c-b06e-64l92becd568",
     patientId: "4c0a7487-871b-4389-a707-f48082f1deb9",
+    examDate: format(addSeconds(date, 600), "yyyy/MM/dd HH:mm:ss"),
+    userId: "a2358b6c-9991-43f8-8282-39a6b130faed",
+    finishAtDate: format(addSeconds(date, 7200), "yyyy/MM/dd HH:mm:ss"),
   },
   {
     id: "h6534966-e783-4g26-95c3-d2b64y91a443",
     status: -1,
     createDate: format(addSeconds(date, 600), "yyyy/MM/dd HH:mm:ss"),
     content: "3b9169e4-69a1-42fe-9908-cb03eyd4d911",
-    depId: "5eed4887-1281-6b0c-b06e-64ek2becd568",
+    depId: "5egd4887-5581-6b0c-b06e-64l92becd568",
     patientId: "4c0a7487-871b-4389-a707-f48082f1deb9",
   },
   {
     id: "k6534966-e783-4g26-95c3-d2b64y91a460",
     status: 0,
     createDate: format(addSeconds(date, 120), "yyyy/MM/dd HH:mm:ss"),
-    examDate: format(addSeconds(date, 180), "yyyy/MM/dd HH:mm:ss"),
     content: "6b9169e4-69a1-42fe-9908-cb03eyd4d911",
     depId: "53e38ef8-00ef-4708-b2f5-05327eee9152",
     patientId: "2f2d1266-a303-4a95-bc9c-2f1c20ffc9f1",
+    examDate: format(addSeconds(date, 180), "yyyy/MM/dd HH:mm:ss"),
+    userId: "1062dcf7-d973-45d9-a68a-42e3599fa75e",
   },
   {
     id: "42534k16-e783-4b36-95c3-du06f491a443",
@@ -373,6 +377,8 @@ export const MEDICAL_VISITS = [
     content: "6b9169e4-69a1-42fe-9908-cb03e9d4d914",
     depId: "53e38ef8-00ef-4708-b2f5-05327eee9152",
     patientId: "a0cfeaae-6f83-4dec-a24e-9b29012c30b8",
+    examDate: format(addSeconds(date, 240), "yyyy/MM/dd HH:mm:ss"),
+    userId: "1062dcf7-d973-45d9-a68a-42e3599fa75e",
   },
   {
     id: "82534k16-e583-4k36-95c3-jq06f491a441",
@@ -381,10 +387,102 @@ export const MEDICAL_VISITS = [
     content: "7b9169e4-69a1-42fe-9908-cb03e9d4d911",
     depId: "8e59ddb0-5040-4058-8c70-371b8ca284e1",
     patientId: "72f41e07-741d-4cad-aef8-b1fc8e21e6e1",
+    examDate: format(addSeconds(date, 120), "yyyy/MM/dd HH:mm:ss"),
+    userId: "a2358b6c-9991-43f8-8282-39a6b130faed",
+    inPatientDepId: "7eed4887-5581-4b0c-b06e-64e92becd568",
   },
 ];
 
-export const MEDICAL_VISITS_META_INFO = [];
+export const MEDICAL_VISITS_META_INFO = [
+  {
+    id: "42864966-e783-4b26-95c3-d2b6fhj1a443",
+    chiefComplaint: "Khám thai định kỳ",
+    historyIllness: "Không",
+    pastMedicalHistory: "Không",
+    familyHistory: "Không",
+    pulse: "",
+    bloodPressure: null,
+    breathing: null,
+    hypothermia: null,
+    weight: null,
+    height: null,
+    generalCondition: "Bình thường",
+    reviewOfSystems: "Bình thường",
+    diagnosis: "Thai 36 tuần",
+    otherServices: {
+      clsCDHA: ["e9b75fea-a671-4270-9ab0-54b96b0c7da1"],
+      clsXN: [
+        "e4af9a17-d164-47ee-ad33-b75abfc7957b",
+        "cefa3b6f-29d8-41a2-bce9-b3ceb3e91f7a",
+        "8b95901f-f4fd-4e7e-bb08-5743f02a7c2a",
+        "9d3f56d5-3349-420a-881e-f669d8181d23",
+        "fc803c0d-723b-4b16-9fd1-5ff02f6744ad",
+        "05b05a06-06a0-4b5d-ac96-e5796d99b926",
+        "9b95901f-f4fd-4e7e-kb08-5743f02a7c2s",
+      ],
+    },
+    medicines: [
+      {
+        route: "Uống",
+        amount: "1 viên/lần",
+        frequency: "2 lần/ngày",
+        time: "Sáng tối sau ăn",
+        quantity: "10",
+        medicineId: "6ec22864-ed16-48d4-9578-3d76db22c0f3",
+        unit: "1",
+      },
+      {
+        route: "Uống",
+        amount: "1 viên/lần",
+        frequency: "1 lần/ngày",
+        time: "Tối sau ăn",
+        quantity: "5",
+        medicineId: "c4802a1c-bd4a-43d5-9a4d-87709bbe22c5",
+        unit: "1",
+      },
+    ],
+  },
+  {
+    chiefComplaint: "Đau nửa đầu trái",
+    historyIllness: "Không",
+    pastMedicalHistory: "Không",
+    familyHistory: "Không",
+    id: "82534k16-e583-4k36-95c3-jq06f491a441",
+    pulse: "100",
+    bloodPressure: "120/80",
+    breathing: "20",
+    hypothermia: "37",
+    weight: "65",
+    height: "175",
+    generalCondition: "Bình thường",
+    reviewOfSystems: "Bình thường",
+    diagnosis: "Tắc mạch máu não nhẹ",
+    otherServices: {
+      clsCDHA: ["a9139725-22cd-4d0f-8576-34541600beec"],
+      ktLamSang: ["8afc2f34-95bd-4d62-8293-0a96c610b324"],
+      clsXN: [
+        "8b95901f-f4fd-4e7e-bb08-5743f02a7c2a",
+        "886f5452-b94a-45ae-a983-b0f377f6c25f",
+        "0c21aef4-c8c8-4685-96e5-84c87d11bf02",
+        "9b95901f-f4fd-4e7e-kb08-5743f02a7c2s",
+        "74506d9d-c045-4cba-8598-97aad3dcbee2",
+        "601e980c-3f0b-424d-a09f-82e1f209a34e",
+        "0f952be6-4d90-4903-891a-9b312e930e40",
+      ],
+    },
+    medicines: [
+      {
+        route: "Tiêm bắp",
+        amount: "2 ml/lần",
+        frequency: "1 lần/ngày",
+        time: "tối trước ngủ",
+        quantity: "10",
+        medicineId: "94181bb9-f2bc-4b1a-a119-0589a7955efb",
+        unit: "6",
+      },
+    ],
+  },
+];
 
 export const HEALTH_CARE_SERVICES = {
   goiKham: {
@@ -425,6 +523,46 @@ export const HEALTH_CARE_SERVICES = {
         name: "Mổ lấy thai tử cung",
         price: 3000000,
       },
+      {
+        id: "0b0d0c69-f523-43f9-ae23-df1e6a5dca82",
+        name: "Đặt sonde niệu dạo",
+        price: 100000,
+      },
+      {
+        id: "ad35a4bc-c34f-451a-be2b-ec372cd1b031",
+        name: "Bịt lỗ thông liên nhĩ/liên thất/ống đông mạch",
+        price: 30000000,
+      },
+      {
+        id: "bbef69a5-259f-4896-b5eb-efb2419e8b77",
+        name: "Bó bột xương các chi (tay, chân...)",
+        price: 6000000,
+      },
+      {
+        id: "5ca03b9c-8218-4eca-9bb7-92a33f0d62a3",
+        name: "Bơm tinh trùng vào buồng tử cung",
+        price: 10000000,
+      },
+      {
+        id: "fa656e77-5b54-48fb-8134-f99827366265",
+        name: "Cắt polype trực tràng",
+        price: 7000000,
+      },
+      {
+        id: "3461cff8-2391-41be-aa49-28a769f43411",
+        name: "Chọc hút kim nhỏ dưới hướng dẫn siêu âm",
+        price: 250000,
+      },
+      {
+        id: "9ff4d100-ef56-4333-a569-0cef2b8fb533",
+        name: "Nội soi bàng quang",
+        price: 3000000,
+      },
+      {
+        id: "8afc2f34-95bd-4d62-8293-0a96c610b324",
+        name: "Phẫu thuật vi phẫu nối các mạch máu",
+        price: 80000000,
+      },
     ],
   },
   clsXN: {
@@ -440,6 +578,71 @@ export const HEALTH_CARE_SERVICES = {
         name: "Định lượng Cholesterol",
         price: 60000,
       },
+      {
+        id: "601e980c-3f0b-424d-a09f-82e1f209a34e",
+        name: "Đo hoạt độ AST",
+        price: 50000,
+      },
+      {
+        id: "74506d9d-c045-4cba-8598-97aad3dcbee2",
+        name: "Đo hoạt độ ALT",
+        price: 50000,
+      },
+      {
+        id: "0c21aef4-c8c8-4685-96e5-84c87d11bf02",
+        name: "Định lượng Acid Uric",
+        price: 50000,
+      },
+      {
+        id: "91729854-1db2-4384-9798-fecd0abadec6",
+        name: "Định lượng Ure",
+        price: 50000,
+      },
+      {
+        id: "886f5452-b94a-45ae-a983-b0f377f6c25f",
+        name: "Định lượng Creatinin",
+        price: 50000,
+      },
+      {
+        id: "0f952be6-4d90-4903-891a-9b312e930e40",
+        name: "Đo hoạt độ GGT",
+        price: 50000,
+      },
+      {
+        id: "cefa3b6f-29d8-41a2-bce9-b3ceb3e91f7a",
+        name: "SARS-CoV-2 test nhanh",
+        price: 150000,
+      },
+      {
+        id: "4fbe426a-9968-4525-95ee-303e0aa69ee3",
+        name: "SARS-CoV-2 Realtime PCR",
+        price: 800000,
+      },
+      {
+        id: "05b05a06-06a0-4b5d-ac96-e5796d99b926",
+        name: "Định lượng Triglycerid",
+        price: 80000,
+      },
+      {
+        id: "fc803c0d-723b-4b16-9fd1-5ff02f6744ad",
+        name: "Định lượng HDL-C",
+        price: 70000,
+      },
+      {
+        id: "9d3f56d5-3349-420a-881e-f669d8181d23",
+        name: "Định lượng LDL-C",
+        price: 70000,
+      },
+      {
+        id: "e4af9a17-d164-47ee-ad33-b75abfc7957b",
+        name: "Dengue NS1/IgG/IgM test nhanh",
+        price: 500000,
+      },
+      {
+        id: "c2027731-e32f-4c88-b2f0-5ef7d51a8ad7",
+        name: "Cúm A/B/H1N1 test nhanh",
+        price: 350000,
+      },
     ],
   },
   clsCDHA: {
@@ -447,13 +650,53 @@ export const HEALTH_CARE_SERVICES = {
     data: [
       {
         id: "1b95901f-f4fd-4e7e-bb88-5743f02a7c2k",
-        name: "Chụp X-Quang ngực thẳng",
+        name: "Chụp Xquang tại giường",
         price: 200000,
       },
       {
         id: "5b95901f-f4fd-4e7e-bb08-5743l02a7c25",
         name: "Siêu âm ổ bụng",
         price: 150000,
+      },
+      {
+        id: "e993c866-ea9c-4638-b2d2-672b55c93594",
+        name: "Chụp UIV thận có tiêm thuốc cản quang",
+        price: 1100000,
+      },
+      {
+        id: "b5c837af-f92b-4ac6-94b9-cf15f09ee1b9",
+        name: "Chụp MRI ba bộ phận (sọ não, cột sống cổ, cột sống lưng, cột sống thắt lưng, 1 khớp), không tiêm thuốc cản quang",
+        price: 6600000,
+      },
+      {
+        id: "8f13a83e-ac60-42be-8c3d-a2b4ed48ed09",
+        name: "Chụp MRI bốn bộ phận (sọ não, cột sống cổ, cột sống lưng, cột sống thắt lưng, 1 khớp), không tiêm thuốc cản quang",
+        price: 9500000,
+      },
+      {
+        id: "a9139725-22cd-4d0f-8576-34541600beec",
+        name: "Chụp MRI mạch não (TOF và FLAIR), không tiêm thuốc cản quang",
+        price: 1800000,
+      },
+      {
+        id: "84b27296-83cc-4643-832b-c31f0e9df208",
+        name: "Chụp Xquang ổ bụng",
+        price: 1000000,
+      },
+      {
+        id: "b1495d43-b212-4a23-a08b-fbcbaaa1d834",
+        name: "Chụp Xquang đường dò",
+        price: 700000,
+      },
+      {
+        id: "e9b75fea-a671-4270-9ab0-54b96b0c7da1",
+        name: "Siêu âm doppler màu",
+        price: 400000,
+      },
+      {
+        id: "76d0140e-0143-43ef-91e6-31d071ddafd9",
+        name: "Siêu âm Doppler xuyên sọ",
+        price: 900000,
       },
     ],
   },
@@ -513,21 +756,93 @@ export const MEDICINES_LIST = [
 ];
 
 export const LABORATORY = {
-  maxSID: 1,
+  maxSID: 3,
   data: [
     {
-      id: "64b2b5a4-1622-4a7e-9162-he83860e96b1",
-      patientId: "2f2d1266-a303-4a95-bc9c-2f1c20ffc9f1",
-      visitId: "k6534966-e783-4g26-95c3-d2b64y91a460",
-      examDate: format(addSeconds(date, 180), "yyyy/MM/dd HH:mm:ss"),
-      laboDate: format(addSeconds(date, 360), "yyyy/MM/dd HH:mm:ss"),
-      sid: "000001",
+      id: "6debf9f9-993c-45c1-8925-220d396bd2dc",
+      visitId: "42864966-e783-4b26-95c3-d2b6fhj1a443",
+      patientId: "4c0a7487-871b-4389-a707-f48082f1deb9",
+      examDate: format(addSeconds(date, 600), "yyyy/MM/dd HH:mm:ss"),
       clsXN: [
         {
-          serviceId: "8b95901f-f4fd-4e7e-bb08-5743f02a7c2a",
-          result: "5.0",
+          serviceId: "cefa3b6f-29d8-41a2-bce9-b3ceb3e91f7a",
+          result: "Âm tính",
         },
       ],
+      sid: "000001",
+      receiptDate: format(addSeconds(date, 660), "yyyy/MM/dd HH:mm:ss"),
+    },
+    {
+      id: "4b773fb4-d608-47da-868f-5ea0ebc025fd",
+      visitId: "42864966-e783-4b26-95c3-d2b6fhj1a443",
+      patientId: "4c0a7487-871b-4389-a707-f48082f1deb9",
+      examDate: format(addSeconds(date, 600), "yyyy/MM/dd HH:mm:ss"),
+      clsXN: [
+        {
+          serviceId: "e4af9a17-d164-47ee-ad33-b75abfc7957b",
+          result: "Dương tính",
+        },
+        {
+          serviceId: "9b95901f-f4fd-4e7e-kb08-5743f02a7c2s",
+          result: "3.2",
+        },
+        {
+          serviceId: "8b95901f-f4fd-4e7e-bb08-5743f02a7c2a",
+          result: "4.58",
+        },
+        {
+          serviceId: "fc803c0d-723b-4b16-9fd1-5ff02f6744ad",
+          result: "1.23",
+        },
+        {
+          serviceId: "9d3f56d5-3349-420a-881e-f669d8181d23",
+          result: "3.46",
+        },
+        {
+          serviceId: "05b05a06-06a0-4b5d-ac96-e5796d99b926",
+          result: "2.18",
+        },
+      ],
+      sid: "000002",
+      receiptDate: format(addSeconds(date, 720), "yyyy/MM/dd HH:mm:ss"),
+    },
+    {
+      id: "43685514-fba2-4769-b226-2dfa183eb6c6",
+      visitId: "82534k16-e583-4k36-95c3-jq06f491a441",
+      patientId: "72f41e07-741d-4cad-aef8-b1fc8e21e6e1",
+      examDate: format(addSeconds(date, 120), "yyyy/MM/dd HH:mm:ss"),
+      clsXN: [
+        {
+          serviceId: "0c21aef4-c8c8-4685-96e5-84c87d11bf02",
+          result: "430",
+        },
+        {
+          serviceId: "9b95901f-f4fd-4e7e-kb08-5743f02a7c2s",
+          result: "4.5",
+        },
+        {
+          serviceId: "886f5452-b94a-45ae-a983-b0f377f6c25f",
+          result: "121",
+        },
+        {
+          serviceId: "8b95901f-f4fd-4e7e-bb08-5743f02a7c2a",
+          result: "5.12",
+        },
+        {
+          serviceId: "74506d9d-c045-4cba-8598-97aad3dcbee2",
+          result: "35",
+        },
+        {
+          serviceId: "601e980c-3f0b-424d-a09f-82e1f209a34e",
+          result: "16",
+        },
+        {
+          serviceId: "0f952be6-4d90-4903-891a-9b312e930e40",
+          result: "48",
+        },
+      ],
+      sid: "000003",
+      receiptDate: format(addSeconds(date, 760), "yyyy/MM/dd HH:mm:ss"),
     },
   ],
 };

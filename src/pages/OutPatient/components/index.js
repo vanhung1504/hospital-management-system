@@ -2,13 +2,18 @@ import { memo, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Dialog from "~/components/Dialog";
+import { toast } from "react-toastify";
 import PatientInfo from "~/components/PatientInfo";
 import {
   getMedicalVisitById,
   saveVisit,
 } from "~/store/features/medicalVisits/medicalVisitsSlice";
-import { deleteVisitMetaInfo } from "~/store/features/medicalVisitsMetaInfo/medicalVisitsMetaInfoSlice";
+import {
+  getMedicalVisitMetaInfoById,
+  deleteVisitMetaInfo,
+} from "~/store/features/medicalVisitsMetaInfo/medicalVisitsMetaInfoSlice";
 import { getPatientById } from "~/store/features/patients/patientsSlice";
+import Finish from "./Finish";
 import MedicalInquiry from "./MedicalInquiry";
 import Medicines from "./Medicines";
 import OtherServices from "./OtherServices";
@@ -17,6 +22,7 @@ import PhysicalExamination from "./PhysicalExamination";
 function MedicalVisitDetail({ visitId }) {
   const userId = useSelector((state) => state.userLoggedIn.id);
   const { status, patientId } = useSelector(getMedicalVisitById(visitId));
+  const visitMetaInfo = useSelector(getMedicalVisitMetaInfoById(visitId));
   const { pid, fullname, dob } = useSelector(getPatientById(patientId));
   const [dialog, setDialog] = useState({
     isShow: false,
@@ -26,6 +32,7 @@ function MedicalVisitDetail({ visitId }) {
     const handleConfirm = (bool) => {
       if (bool) {
         if (status === -1) {
+          //Gọi khám
           dispatch(
             saveVisit({
               id: visitId,
@@ -35,15 +42,29 @@ function MedicalVisitDetail({ visitId }) {
             })
           );
         } else {
-          dispatch(
-            saveVisit({
-              id: visitId,
-              status: -1,
-              examDate: null,
-              userId: null,
-            })
-          );
-          dispatch(deleteVisitMetaInfo(visitId));
+          // Hủy khám
+          if (
+            (Boolean(visitMetaInfo) &&
+              visitMetaInfo?.otherServices &&
+              Object.keys(visitMetaInfo?.otherServices)?.length > 0) ||
+            (Boolean(visitMetaInfo) &&
+              visitMetaInfo?.medicines &&
+              visitMetaInfo?.medicines?.length > 0)
+          ) {
+            toast.error(
+              "Lỗi. Không thể hủy khám khi đã có các chỉ định dịch vụ khác hoặc đơn thuốc!"
+            );
+          } else {
+            dispatch(
+              saveVisit({
+                id: visitId,
+                status: -1,
+                examDate: null,
+                userId: null,
+              })
+            );
+            dispatch(deleteVisitMetaInfo(visitId));
+          }
         }
       }
 
@@ -98,6 +119,7 @@ function MedicalVisitDetail({ visitId }) {
                 <PhysicalExamination visitId={visitId} />
                 <OtherServices visitId={visitId} />
                 <Medicines visitId={visitId} setDialog={setDialog} />
+                <Finish visitId={visitId} />
               </>
             )}
           </Col>
